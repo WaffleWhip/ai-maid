@@ -1,0 +1,12 @@
+services:
+  ai-maid:
+    build: .
+    container_name: ai-maid
+    restart: unless-stopped
+    volumes:
+      - .:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+    # Use watch mode for development if needed, otherwise just run normally
+    command: ["bun", "run", "--watch", "src/index.ts"]
